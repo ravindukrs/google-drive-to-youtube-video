@@ -136,8 +136,6 @@ def resumable_upload(insert_request):
     except HttpError as e:
       if e.resp.status in RETRIABLE_STATUS_CODES:
         error = "A retriable HTTP error %d occurred:\n%s" % (e.resp.status, e.content)
-      else:
-        raise
     except RETRIABLE_EXCEPTIONS as e:
       error = "A retriable error occurred: %s" % e
 
